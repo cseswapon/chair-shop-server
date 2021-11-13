@@ -91,6 +91,12 @@ async function run() {
       const result = await productReview.find({}).toArray();
       res.json(result);
     });
+    // review post
+    app.post("/reviews", async (req, res) => {
+      const data = req.body;
+      const result = await productReview.insertOne(data);
+      res.json(result);
+    });
     // user get
     app.get("/users", async (req, res) => {
       const cursor = req.query.email;
